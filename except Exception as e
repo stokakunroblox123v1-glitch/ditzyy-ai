@@ -1,0 +1,5 @@
+        except Exception as e:
+            if "429" in str(e):
+                str.warning("Ditzyy AI lagi sibuk banget nih karena batas kuota gratis dari Google. Tunggu sekitar 30 detik sampai 1 menit, lalu coba kirim pesan lagi ya! ⏳")
+            else:
+                str.error(f"Terjadi kesalahan koneksi API: {e}")
