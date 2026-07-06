@@ -1,0 +1,15 @@
+import time
+
+# Memeriksa apakah waktu tunggu sudah selesai
+if "waktu_terakhir" not in str.session_state:
+    str.session_state.waktu_terakhir = 0
+
+if prompt := str.chat_input("Ketik pertanyaan Anda di sini..."):
+    waktu_sekarang = time.time()
+    
+    # Berikan jarak minimal 4 detik antar pesan agar tidak terkena limit 429
+    if waktu_sekarang - str.session_state.waktu_terakhir < 4:
+        str.warning("Mohon tunggu 4 detik sebelum mengirim pesan lagi! ⏳")
+    else:
+        str.session_state.waktu_terakhir = waktu_sekarang
+        # --- Jalankan fungsi kirim ke Gemini API di sini ---
